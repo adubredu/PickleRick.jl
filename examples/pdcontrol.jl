@@ -12,6 +12,7 @@ env = Pickle(obstacle_positions,
               zero(init_joint_positions),
               goal_position)
 
+# visualization settings
 env.trail = false
 env.show_contacts = false
 env.show_goal = false 
@@ -21,6 +22,7 @@ env.show_support_polygon = true
 env.dynamic = false
 ax, fig = visualize!(env)
 
+# initial joint positions and velocities
 θ = init_joint_positions
 θ̇ = zero(init_joint_positions)
 
