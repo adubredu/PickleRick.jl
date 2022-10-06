@@ -12,7 +12,7 @@ env = Pickle(obstacle_positions,
               zero(init_joint_positions),
               goal_position)
 
-# visualization settings
+# simulation and visualization settings
 env.trail = false
 env.show_contacts = false
 env.show_goal = false 
@@ -20,14 +20,17 @@ env.show_obstacle = false
 env.show_com = false 
 env.show_support_polygon = true
 env.dynamic = false
+env.Δt = 1e-3
+
+# create visualization
 ax, fig = visualize!(env)
 
 # initial joint positions and velocities
 θ = init_joint_positions
 θ̇ = zero(init_joint_positions)
 
-# Time Horizon
-T = 3000
+# Time Horizon 
+T = 1500 # in milliseconds
 
 # PD gains
 Kp = 10.0
