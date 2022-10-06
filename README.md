@@ -1,4 +1,4 @@
-# PickleRick
+# PickleRick.jl
 
 ![](media/dance.gif)
 
