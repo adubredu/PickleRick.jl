@@ -2,7 +2,9 @@
 
 ![](media/dance.gif)
 
-Julia package for simulation and controls of a 10-link planar humanoid with pinned feet.
+Julia package for simulation and controls of a 10-link planar humanoid with pinned feet. 
+
+This package uses [WGLMakie.jl]() for visualization in the browser. You can also view the visualizations in a Jupyter notebook.
 
 ## Installation
 1. Open your Julia REPL by typing  `julia` in your terminal.
