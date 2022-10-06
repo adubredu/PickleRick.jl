@@ -26,8 +26,12 @@ ax, fig = visualize!(env)
 
 # Time Horizon
 T = 3000
-Kp = 10
-Kd = 5
+
+# PD gains
+Kp = 10.0
+Kd = 5.0 
+
+# Reference posture
 θref = [π/2, 2π/3, π/6, 2π/3, π/6, π/2, π/3, 7π/12, 2π/3, 5π/12]
 
 for i=1:T
