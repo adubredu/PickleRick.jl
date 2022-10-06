@@ -1,5 +1,22 @@
 module PickleRick
 
-# Write your package code here.
+using Makie 
+using DataStructures: CircularBuffer 
+using LinearAlgebra
+using StaticArrays
+using Colors 
+
+include("types.jl")
+include("visualize.jl") 
+include("kinematics.jl")
+include("dynamics.jl")
+include("simulate.jl")
+
+export Pickle
+
+export compute_COM,
+        link_poses,
+        step!,
+        visualize!
 
 end
