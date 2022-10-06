@@ -13,4 +13,4 @@ Julia package for simulation and controls of a 10-link planar humanoid with pinn
 
 
 ## Usage
-See the (examples)[examples] folder for usage examples.
+See the [examples](examples) folder for usage examples.
