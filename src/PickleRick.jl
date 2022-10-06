@@ -1,6 +1,6 @@
 module PickleRick
 
-using Makie 
+using GLMakie 
 using DataStructures: CircularBuffer 
 using LinearAlgebra
 using StaticArrays

@@ -3,7 +3,7 @@ function visualize!(env::Pickle)
     obstacle_radii = env.r*2
     goal_position = env.g
     fig = Figure()
-    ax = Axis(fig[1,1], aspect=DataAspect(), limits=(-5.,5.,-1.,5.)) 
+    ax = Axis(fig[1,1], limits=(-5.,5.,-1.,5.)) 
     obstacle_observables = []
     for (i, ob) in enumerate(object_positions)  
         ox =  Observable(SVector{2,Float64}(ob...))
