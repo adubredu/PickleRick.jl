@@ -2,19 +2,19 @@ function visualize!(env::Pickle)
     object_positions = env.o 
     obstacle_radii = env.r*2
     goal_position = env.g
-    fig = Figure()
-    ax = Axis(fig[1,1], limits=(-5.,5.,-1.,5.)) 
+    fig = WGLMakie.Figure()
+    ax = Axis(fig[1,1], aspect=DataAspect(), limits=(-5.,5.,-1.,5.)) 
     obstacle_observables = []
     for (i, ob) in enumerate(object_positions)  
         ox =  Observable(SVector{2,Float64}(ob...))
         if env.show_obstacle scatter!(ax, ox; marker=:circle, 
-            markersize=obstacle_radii[i], markerspace=SceneSpace, 
+            markersize=obstacle_radii[i], markerspace=:data, 
             color=:black) end
         push!(obstacle_observables, ox)
         if env.show_contacts
             keypoints = get_keypoints(collect(ox.val), 0.5*obstacle_radii[i],N=8) 
             scatter!(ax, [k[1] for k in keypoints], [k[2] for k in keypoints]; 
-            marker=:circle, markerspace=SceneSpace, markersize=0.25, color=:red) 
+            marker=:circle, markerspace=:data, markersize=0.25, color=:red) 
         end
     end 
 
@@ -33,12 +33,12 @@ function visualize!(env::Pickle)
     lines!(ax, chain4; linewidth=5, color=:purple)
     lines!(ax, chain5; linewidth=5, color=:purple)
 
-    scatter!(ax, chain1; marker=:circle, color=:black, markersize=0.2, markerspace=SceneSpace)
-    scatter!(ax, chain2; marker=:circle, color=:black, markersize=0.2, markerspace=SceneSpace)
-    scatter!(ax, chain3; marker=:circle, color=:black, markersize=0.2, markerspace=SceneSpace)
-    scatter!(ax, chain4; marker=:circle, color=:black, markersize=0.2, markerspace=SceneSpace)
-    scatter!(ax, chain5; marker=:circle, color=:black, markersize=0.2, markerspace=SceneSpace)
-    scatter!(ax, head; marker=:circle, color=:black, markersize=0.6, markerspace=SceneSpace)
+    scatter!(ax, chain1; marker=:circle, color=:black, markersize=0.2, markerspace=:data)
+    scatter!(ax, chain2; marker=:circle, color=:black, markersize=0.2, markerspace=:data)
+    scatter!(ax, chain3; marker=:circle, color=:black, markersize=0.2, markerspace=:data)
+    scatter!(ax, chain4; marker=:circle, color=:black, markersize=0.2, markerspace=:data)
+    scatter!(ax, chain5; marker=:circle, color=:black, markersize=0.2, markerspace=:data)
+    scatter!(ax, head; marker=:circle, color=:black, markersize=0.6, markerspace=:data)
      
     ocom = nothing
     if env.show_com
@@ -46,7 +46,7 @@ function visualize!(env::Pickle)
         ocom = Observable(SVector{2, Float64}(com...))
         # proj = Observable([SVector{2, Float64}(com...), SVector{2, Float64}(com[1], 0.0)])
         # lines!(ax, proj; linewidth=5, color=:black)
-        scatter!(ax, ocom; marker=:circle, markersize=0.5, markerspace=SceneSpace, color=:red)
+        scatter!(ax, ocom; marker=:circle, markersize=0.5, markerspace=:data, color=:red)
     end
 
     if env.show_support_polygon
@@ -56,7 +56,7 @@ function visualize!(env::Pickle)
     end
 
     if env.show_goal 
-        scatter!(ax, [goal_position[1]], [goal_position[2]]; marker=:circle, markersize=0.5, markerspace=SceneSpace, color=:green)
+        scatter!(ax, [goal_position[1]], [goal_position[2]]; marker=:circle, markersize=0.5, markerspace=:data, color=:green)
     end
 
     env.body_observables = [chain1, chain2, chain3, chain4, chain5, head]
