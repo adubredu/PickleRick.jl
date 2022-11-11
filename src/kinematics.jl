@@ -40,3 +40,33 @@ function link_poses(θ, env::Pickle)
     return [[[x6, y6], [x7, y7], [x8, y8]], [[x6, y6], [x9, y9], [x10, y10]], 
     [[x6, y6], [x1, y1], [x0, y0]], [[x1, y1], [x4, y4], [x5, y5]], [[x1, y1], [x2, y2], [x3, y3]], [[xn, yn]]]
 end
+
+function left_hand_pose(θ)
+    poses = link_poses(θ)
+    return poses[5][end]
+end
+
+function right_hand_pose(θ)
+    poses = link_poses(θ)
+    return poses[4][end]
+end
+
+function left_foot_pose(θ)
+    poses = link_poses(θ)
+    return poses[1][end]
+end
+
+function right_foot_pose(θ)
+    poses = link_poses(θ)
+    return poses[2][end]
+end
+
+function head_pose(θ)
+    poses = link_poses(θ)
+    return poses[3][end]
+end
+
+function neck_pose(θ)
+    poses = link_poses(θ)
+    return poses[6][end]
+end
